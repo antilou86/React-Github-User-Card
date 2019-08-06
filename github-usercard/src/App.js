@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios'
 import UserCard from './components/UserCard'
+import Followers from './components/Followers'
 import './App.css';
 
 class App extends React.Component {
@@ -40,6 +41,7 @@ class App extends React.Component {
       <div><p>graph here</p></div>
 
       <div><p>followers here</p></div>
+      <Followers userFollowers = {this.state.userData.followers_url}/>
     </div>
   );
 };

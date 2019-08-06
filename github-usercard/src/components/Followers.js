@@ -1,11 +1,15 @@
 import React from 'react';
 
-const Followers = () => {
-
+class Followers extends React.Component {
+    constructor(props) {
+       super(); 
+       this.state = {}
+    }
+    render() {
     return (
         <>
         </>
-    )
+    )}
 }
 
 export default Followers
