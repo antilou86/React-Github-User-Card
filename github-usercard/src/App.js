@@ -1,13 +1,12 @@
 import React from 'react';
-import axios from 'axios';
-
+import axios from 'axios'
+import UserCard from './components/UserCard'
 import './App.css';
 
-class App extends React.Component() {
+class App extends React.Component {
   constructor(){
     super();
     this.state = {
-
     }
   }
 
@@ -16,10 +15,10 @@ class App extends React.Component() {
   }
 
   fetchGitData = () => {
-    axios.get('https://api.github.com/users/antilou86').then(
+    axios.get(`https://api.github.com/users/antilou86`).then(
       (res) => {
-        console.log('info.data: ' + res.data);
-        this.setState({}) //unsure, lets look at the response data
+        console.log('info.data: ', res.data);
+        this.setState({ userData: res.data }) 
         })
       .catch(
         (err) => {
@@ -30,10 +29,12 @@ class App extends React.Component() {
   render() {
   return (
     <div className="App">
-      <header className="App-header">
+      {/* <header className="App-header"> */}
         <h1>Github User Card: now with ReactJs! </h1>
-      </header>
+      {/* </header> */}
+
       <div><p>user card goes here</p></div>
+      <UserCard userData={this.state.userData}/>
 
       <div><p>graph here</p></div>
 
@@ -41,6 +42,6 @@ class App extends React.Component() {
     </div>
   );
 };
-}
+} 
 
 export default App;
