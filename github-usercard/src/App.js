@@ -49,12 +49,10 @@ class App extends React.Component {
         <h1>Github User Card: now with ReactJs! </h1>
       {/* </header> */}
 
-      <div><p>user card goes here</p></div>
+      <h3>Meet {this.state.userData.login}: </h3>
       <UserCard userData={this.state.userData}/>
 
-      <div><p>graph here</p></div>
-
-      <div><p>followers here</p></div>
+      <h3>Followers: </h3>
       <Followers followerData={this.state.followerData}/>
     </div>
   );
