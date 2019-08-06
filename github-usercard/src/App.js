@@ -9,11 +9,13 @@ class App extends React.Component {
     super();
     this.state = {
       userData: {},
+      followerData: []
     }
   }
 
   componentDidMount() {
     this.fetchGitData();
+    this.fetchFollowerData();
   }
 
   fetchGitData = () => {
@@ -28,6 +30,18 @@ class App extends React.Component {
         })
   }
 
+    fetchFollowerData = () => {
+      axios.get(`https://api.github.com/users/antilou86/followers`).then(
+        (result) => {
+          console.log('follower data: ', result.data)
+          this.setState( {followerData: result.data} )
+        })
+        .catch(
+          (error) => {
+            console.log(error)}
+            )
+    }
+ 
   render() {
   return (
     <div className="App">
@@ -41,7 +55,7 @@ class App extends React.Component {
       <div><p>graph here</p></div>
 
       <div><p>followers here</p></div>
-      <Followers userFollowers = {this.state.userData.followers_url}/>
+      <Followers followerData={this.state.followerData}/>
     </div>
   );
 };
